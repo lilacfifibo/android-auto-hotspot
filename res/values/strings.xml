@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">热点自动化</string>
+    <string name="acc_label">热点自动化</string>
+    <string name="acc_desc">用于代替你下拉快捷设置面板并点击「个人热点」磁贴，仅此一项操作，不读取、不上传任何屏幕内容。</string>
+</resources>

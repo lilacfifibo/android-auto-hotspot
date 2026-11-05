@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 间距刻度 -->
+    <dimen name="space_xs">4dp</dimen>
+    <dimen name="space_s">8dp</dimen>
+    <dimen name="space_m">12dp</dimen>
+    <dimen name="space_l">16dp</dimen>
+    <dimen name="space_xl">22dp</dimen>
+    <dimen name="gutter">20dp</dimen>
+
+    <!-- 圆角刻度：3 档 + 胶囊 -->
+    <dimen name="radius_sm">10dp</dimen>
+    <dimen name="radius_md">14dp</dimen>
+    <dimen name="radius_lg">20dp</dimen>
+    <dimen name="radius_pill">100dp</dimen>
+
+    <dimen name="touch_min">44dp</dimen>
+</resources>

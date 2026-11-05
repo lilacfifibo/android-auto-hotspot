@@ -1,0 +1,18 @@
+# 构建产物
+build/
+*.apk
+*.idsig
+
+# 签名密钥：由 build.sh 自动生成，绝不入库
+*.keystore
+*.jks
+
+# 编辑器 / 系统
+.idea/
+*.iml
+.DS_Store
+Thumbs.db
+
+# 本地工具缓存
+__pycache__/
+*.pyc
