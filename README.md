@@ -33,8 +33,8 @@ Android 16 起，普通应用已经拿不到开关热点的能力了——`Tethe
 **方式一：自己编译**（推荐，能顺手改）
 
 ```bash
-git clone https://github.com/<you>/HotspotAuto.git
-cd HotspotAuto
+git clone https://github.com/lilacfifibo/android-auto-hotspot.git
+cd android-auto-hotspot
 ./build.sh
 adb install -r build/HotspotAuto.apk
 ```
