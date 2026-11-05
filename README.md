@@ -4,6 +4,17 @@
 
 纯 Java、零第三方依赖（不用 AndroidX），命令行一条 `./build.sh` 直接出 APK，体积 76 KB。
 
+> ### ⚠️ 这是自用项目，只按一台手机适配
+>
+> **开发环境：一加 12（CPH2573）/ OxygenOS 16 / Android 16。**
+>
+> 磁贴关键词、控件节点结构、点击方式，全部是照着这台机器实际的快捷面板调出来的。
+> 换到其它机型，大概率**找不到磁贴，或者点了没反应**——不是配置问题，是界面结构不同。
+>
+> 没有在其它任何手机、其它任何 ROM 上验证过，**不保证可用**。
+> 想移植的话，要动的是 `TileAccessibilityService.findTile()` 和设置里的「磁贴关键词」，
+> 先用 `adb shell uiautomator dump` 看清你自己机器上热点磁贴长什么样。
+
 <img src="docs/screenshot-main.png" width="360" alt="主界面">
 
 ## 为什么非要"点磁贴"
@@ -46,6 +57,9 @@ adb install -r build/HotspotAuto.apk
 
 **方式二：** 直接下 [Release 里的 APK](https://github.com/lilacfifibo/android-auto-hotspot/releases/latest)，
 传到手机点击安装。
+
+不管哪种方式，都请注意：APK 和源码都只为一加 12 / OxygenOS 16 调过。
+装到别的手机上大概率是「点了没反应」，这在意料之中。
 
 ## 首次配置
 
@@ -100,7 +114,7 @@ adb shell pm grant com.hc.hotspotauto android.permission.POST_NOTIFICATIONS
 顺带一个坑：测试车机的 A2DP（媒体）一直连不上，只有 HFP（通话）能连。
 所以判定「已连接」不能只看 A2DP，两个 profile 都要读。
 
-## 在 Android 16 上实测到的三个反直觉行为
+## 实测到的三个反直觉行为（一加 12 / OxygenOS 16）
 
 | 环节 | 结果 |
 |---|---|
@@ -162,9 +176,19 @@ adb shell am start -n com.hc.hotspotauto/.MainActivity \
 | 车机熄火后若仍保持连接，热点会一直开 | 触发条件是「连接」而非「点火」 |
 | 不同 ROM 磁贴名称/结构可能不同 | 改关键词；结构差异较大时需调 `findTile()` |
 
-**已验证**：OnePlus CPH2573 / OxygenOS 16（Android 16）。
-其它机型未测，磁贴节点结构可能不同——如果日志里找不到磁贴，欢迎提 issue 并附上
-`adb shell uiautomator dump` 的输出。
+### 适配范围
+
+**只有一台机器验证过：一加 12（CPH2573）/ OxygenOS 16 / Android 16。**
+
+这是自用项目，适配对象只有这一台。其它机型、其它 ROM、其它 Android 版本一律未测，
+**不保证可用**。常见差异：
+
+- 磁贴的控件类型和 `content-desc` 不同（这台是 `android.widget.Switch` + `个人热点`）
+- 快捷面板可能不是一次就能展开到磁贴所在页面
+- 部分 ROM 会拦掉 `dispatchGesture`，或要求额外的悬浮窗权限
+
+如果确实想在不兼容的机器上跑，把 `adb shell uiautomator dump` 的输出提上来，
+再改 `findTile()` 里的匹配条件——这部分不是配置能解决的，得改代码。
 
 ## 工程结构
 
