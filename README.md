@@ -44,7 +44,8 @@ adb install -r build/HotspotAuto.apk
 
 编译产物是 debug 签名，装到手机上属于「未知来源应用」，需要自行放行。
 
-**方式二：Release 里下 APK**，传到手机点击安装。
+**方式二：** 直接下 [Release 里的 APK](https://github.com/lilacfifibo/android-auto-hotspot/releases/latest)，
+传到手机点击安装。
 
 ## 首次配置
 
